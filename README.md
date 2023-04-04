@@ -21,13 +21,13 @@ docker-compose build
 2. Get inside yolo container by executing:
 
 ```bash
-docker compose run yolo bin/bash
+docker-compose run yolo bin/bash
 ```
 
 3. Get inside gstreamer container by executing:
 
 ```bash
-docker compose run gst-container bin/bash
+docker-compose run gst-container bin/bash
 ```
 
 All container's shells will have an assigned ip sharing same subnetwork, useful for client/server test
