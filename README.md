@@ -50,12 +50,28 @@ cd /workspace/src/build/remote
 ./gstreamer-remote
 ```
 
-3. From yolo container, go to the python app folder and start the main.py directly. The app listens to the HOST and PORT specified in the code
+3. From yolo container, go to the python app folder and start the main.py directly. Modify the HOST and PORT specified in the code with the value of your containers info.
 
 ```bash
 cd /workspace/src
 python main.py
 ```
+
+4. Run another gstreamer container instance
+
+```bash
+docker-compose run gst-container bin/bash
+```
+
+and,
+    a - Copy the Legend.mp4 file into the folder where is locate the src code of the gstreamer-sandbox (/gstreamer-sandbox/src$)
+    b - Execute the gstreamer pipeline local to connect to the remote: (replace )
+```bash
+gst-launch-1.0 filesrc location=Legend.mp4 ! decodebin ! x264enc ! rtph264pay ! udpsink host=172.X.X.X port=4000
+```
+
+5. Get the video/images or the specified output by yolo in the yolo container /workspace/src/ folder
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
